@@ -1,6 +1,6 @@
 /* *******************************************************************************************
  *                                                                                           *
- * Plese read the following tutorial before implementing tasks:                              *
+ * Please read the following tutorial before implementing tasks:                              *
  * https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions            *
  *                                                                                           *
  * You can use the next web site in order to check and build regexps:                        *
@@ -32,7 +32,8 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  const reg = /^[0-9A-Fa-f]{8}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{12}$/;
+  return reg;
 }
 
 
@@ -54,13 +55,14 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  const reg = /p[a-z\s]{1}t/;
+  return reg;
 }
 
 
 /**
  * Returns the password validator regex.
- * Regex will validate a password to make sure it meets the follwing criteria:
+ * Regex will validate a password to make sure it meets the following criteria:
  *  - At least specified characters long (argument minLength)
  *  - Contains a lowercase letter
  *  - Contains an uppercase letter
@@ -78,8 +80,9 @@ function getRegexForPitSpot() {
  *   'PASSW0RD'.match(validator)  => false
  *   'Pa55'.match(validator) => false
  */
-function getPasswordValidator(/* minLength */) {
-  throw new Error('Not implemented');
+function getPasswordValidator(minLength) {
+  const reg = RegExp(`^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[0-9A-Za-z]{${minLength},}$`);
+  return reg;
 }
 
 
