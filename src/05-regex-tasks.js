@@ -32,7 +32,7 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  const reg = /^[0-9A-Fa-f]{8}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{4}-{1}[0-9A-Fa-f]{12}$/;
+  const reg = /^{+[0-9A-Fa-f]{8}-+([0-9A-Fa-f]{4}-+){3}[0-9A-Fa-f]{12}}+$/;
   return reg;
 }
 
