@@ -566,10 +566,8 @@ function distinct(arr) {
  *    'Poland' => ['Lodz']
  *   }
  */
-function group(array, keySelector, valueSelector) {
-  console.log(array);
-  console.log(keySelector);
-  console.log(valueSelector);
+function group(/* array, keySelector, valueSelector */) {
+  throw new Error('Not implemented');
 }
 
 
