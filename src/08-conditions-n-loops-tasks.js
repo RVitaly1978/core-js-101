@@ -440,8 +440,16 @@ function isBracketsBalanced(str) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  let quotient = num;
+  const arr = [];
+
+  while (quotient >= n) {
+    arr.push(quotient % n);
+    quotient = Math.floor(quotient / n);
+  }
+  arr.push(quotient);
+  return arr.reverse().join('');
 }
 
 
@@ -497,8 +505,24 @@ function getCommonDirectoryPath(pathes) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const row = m1.length;
+  const column = m2[0].length;
+  const col1 = m1[0].length;
+
+  const multiple = Array(row);
+  for (let i = 0; i < row; i += 1) {
+    multiple[i] = Array(column).fill(0);
+  }
+
+  for (let i = 0; i < row; i += 1) {
+    for (let j = 0; j < column; j += 1) {
+      for (let n = 0; n < col1; n += 1) {
+        multiple[i][j] += m1[i][n] * m2[n][j];
+      }
+    }
+  }
+  return multiple;
 }
 
 
@@ -532,8 +556,34 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  for (let i = 0; i < 3; i += 1) {
+    const base = position[i][0];
+    let n = 1;
+    for (let j = 1; j < 3; j += 1) {
+      if (position[i][j] === base && position[i][j] !== undefined) n += 1;
+    }
+    if (n === 3) return base;
+  }
+
+  for (let j = 0; j < 3; j += 1) {
+    const base = position[0][j];
+    let n = 1;
+    for (let i = 1; i < 3; i += 1) {
+      if (position[i][j] === base && position[i][j] !== undefined) n += 1;
+    }
+    if (n === 3) return base;
+  }
+
+  if (position[0][0] === position[1][1]
+    && position[0][0] === position[2][2]
+    && position[0][0] !== undefined) return position[0][0];
+
+  if (position[2][0] === position[1][1]
+    && position[2][0] === position[0][2]
+    && position[2][0] !== undefined) return position[2][0];
+
+  return undefined;
 }
 
 
